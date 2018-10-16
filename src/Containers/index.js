@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, ActivityIndicator, StyleSheet } from 'react-native'
 import styles from './styles';
 import {isLoggedIn} from '../Api/auth'
+import SplashScreen from 'react-native-splash-screen';
 import {getRootNavigator} from './Navigation/index'
 export default class App extends Component{
     constructor(props){
@@ -13,8 +14,9 @@ export default class App extends Component{
             loggedIn: false
         };
     }
-
+    
     async componentDidMount() {
+        SplashScreen.hide()
         const loggedIn = await isLoggedIn();
         this.setState({loggedIn, loading: false});
     }
